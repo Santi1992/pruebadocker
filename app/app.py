@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 
 def create_app():
     app = Flask(__name__)
@@ -10,7 +10,12 @@ def create_app():
 
     @app.route('/ping',methods=["GET"])
     def ping():
-        return 'pong!'
+        return 'superPong!!!!'
+    
+    @app.route('/pruebajson',methods=["POST"])
+    def prubasjson():
+        json = request.json
+        return jsonify(json)
     
     return app
     ## No hago un app.run dado que el encarado de correrla será gunicorn
